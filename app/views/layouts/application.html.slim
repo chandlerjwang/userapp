@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chatapp</title>
+    = csrf_meta_tags
+
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  </head>
+
+  <body>
+    = render 'layouts/header'
+    .container style="margin-top: 100px;"
+      - flash.each do |message_type, message|
+        = content_tag(:div, message, class: "alert alert-#{message_type}")    
+      = yield
+      = debug(params) if Rails.env.development?
+  </body>
+</html>
