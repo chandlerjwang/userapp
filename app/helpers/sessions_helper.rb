@@ -9,8 +9,7 @@ module SessionsHelper
 		cookies.permanent[:remember_token] = user.remember_token
 	end
 
-	def forget(user)
-		# user.forget
+	def forget
 		cookies.delete(:user_id)
 		cookies.delete(:remember_token)
 	end
@@ -32,7 +31,7 @@ module SessionsHelper
 	end
 
 	def log_out
-		forget(current_user)
+		forget
 		session.delete(:user_id)
 		@current_user = nil
 	end
