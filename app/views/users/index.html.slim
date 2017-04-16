@@ -1,2 +1,5 @@
-- @users.each do |u|
-	li #{u.name} #{u.email}
+= provide(:title, 'All users')
+h1 All users
+
+ul.users
+	= render @users
