@@ -1,10 +1,13 @@
 class UsersController < ApplicationController
+  before_action :require_user_login, only: [:edit, :update, :show]
+  before_action :require_correct_user, only: [:edit, :update, :show]
+
   def index
     @users = User.all    
   end
 
   def show
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
   end
 
   def new
@@ -23,11 +26,11 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       flash[:success] = "Profile updated!"
       redirect_to @user
@@ -43,5 +46,18 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    end
+
+    # site aauthorization
+    def require_user_login
+      unless logged_in?
+        flash[:danger] = "Please log in"
+        redirect_to login_path
+      end
+    end
+
+    def require_correct_user
+      @user = User.find(params[:id])
+      redirect_to root_path unless current_user?(@user)
     end
 end
