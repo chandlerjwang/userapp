@@ -1,4 +1,8 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
-
-h1 #{@user.name} #{@user.email}
+= provide(:title, @user.name)
+.row
+  aside.col-md-4
+    section.user_info
+      h1
+        = @user.name
+      p = @user.created_at
+      p = @user.email

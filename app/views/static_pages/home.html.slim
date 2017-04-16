@@ -1,5 +1,11 @@
-<h1>StaticPages#home</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
+= provide(:title, "Home")
 
-= link_to 'sign up', signup_path
-= link_to 'login', login_path
+- if logged_in?
+	.center
+		h1 you are currently logged in!
+- else
+	.center.jumbotron
+		h1 ChatApp
+		h2 User Registration/ User Login&Logout/ User Authentication / User Authorization
+
+		= link_to "Sign Up!", signup_path, class: "btn btn-lg btn-primary"

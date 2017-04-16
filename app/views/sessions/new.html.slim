@@ -1,6 +1,5 @@
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
-
+= provide(:title, "Log in")
+h1 Log In
 .row
 	.col-md-6.col-md-offset-3
 		= form_for(:session, url: login_url) do |f|
@@ -15,3 +14,6 @@
 		        span Remember me on this computer
 	
 			= f.submit :login, class: "btn btn-primary"
+
+		span New user? 
+		= link_to "Sign up now!", signup_path
