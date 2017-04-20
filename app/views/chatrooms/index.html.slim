@@ -1,0 +1,9 @@
+= provide(:title, 'All Chat Rooms!')
+h1 All Chat Rooms
+
+.center
+	p Don't see any chat rooms you like?
+	= link_to "Create a Chatroom!", new_chatroom_path, class: "btn btn-primary"
+
+ul.users
+	= render @chatrooms

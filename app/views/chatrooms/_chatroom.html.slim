@@ -1,0 +1,7 @@
+<li>
+	= link_to chatroom.topic, chatroom
+
+	- if current_user.admin?
+		|  | 
+		= link_to "delete", chatroom, method: :delete,
+	                              data: { confirm: "You sure?" }
