@@ -1,7 +1,6 @@
 class MessagesController < ApplicationController
   def create
-    message = Message.new(message_params)
-    message.user = current_user
+    message = current_user.messages.build(message_params)
     if message.save
       flash[:success] = "message submitted"
       redirect_to message
