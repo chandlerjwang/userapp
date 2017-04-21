@@ -1,5 +1,5 @@
 class ChatroomsController < ApplicationController
-	before_action :require_user_login, only: [:index, :new, :create, :show]
+	before_action :require_user_login
 
 	def index
 		@chatrooms = Chatroom.all
@@ -35,13 +35,5 @@ class ChatroomsController < ApplicationController
 
 		def chatroom_params
 			params.require(:chatroom).permit(:topic)
-		end
-
-	# site authorization
-	def require_user_login
-	  unless logged_in?
-	    flash[:danger] = "Please log in"
-	    redirect_to login_path
-	  end
-	end  	
+		end	
 end
