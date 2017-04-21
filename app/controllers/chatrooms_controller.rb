@@ -20,6 +20,8 @@ class ChatroomsController < ApplicationController
 	end
 
 	def show
+		@chatroom = Chatroom.find_by(id: params[:id])
+		@message = Message.new
 	end
 
 	def destroy
