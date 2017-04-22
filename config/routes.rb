@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'messages/show'
-
   root 'static_pages#home'
   resources :users
   resources :chatrooms
@@ -14,4 +12,6 @@ Rails.application.routes.draw do
   get 	 '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
+
+  mount ActionCable.server, at: '/cable'
 end
