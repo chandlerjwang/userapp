@@ -7,7 +7,6 @@ App.room = App.cable.subscriptions.create "RoomChannel",
 
   received: (data) ->
   	append_message(data)
-  	console.log data
   	scroll_bottom()
 
 
@@ -18,7 +17,7 @@ $(document).on 'turbolinks:load', ->
 
 submit_message = () ->
   $('#message_content').on 'keydown', (event) ->
-    if event.keyCode is 13
+    if event.keyCode is 13 && !event.shiftKey
       $('#message-input-btn').click() #click the button
       event.target.value=""           #clear out the input area
       event.preventDefault()		  #don't enter new line  
