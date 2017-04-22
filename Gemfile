@@ -46,3 +46,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # View Template Engine
 gem 'slim'
+
+gem 'redis',                   '3.3.1'

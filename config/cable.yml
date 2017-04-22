@@ -6,4 +6,4 @@ test:
 
 production:
   adapter: redis
-  url: redis://localhost:6379/1
+  url: redis://redistogo:8712f8204e49ed0d3afbed27131cc776@barreleye.redistogo.com:9483/
