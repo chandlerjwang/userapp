@@ -6,5 +6,12 @@
 message_appender = (content) ->
   $('#messages').append content
 
+submit_message = () ->
+  $('#message_content').on 'keydown', (event) ->
+    if event.keyCode is 13
+      $('#message-input-btn').click() #click the button
+      event.target.value=""           #clear out the input area
+      event.preventDefault()		  #don't enter new line
+
 $(document).on 'turbolinks:load', ->
-  message_appender('hello, world!')
+  submit_message()
