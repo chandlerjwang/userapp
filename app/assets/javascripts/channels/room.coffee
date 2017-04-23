@@ -33,15 +33,17 @@ append_message = (data) ->
           <p style='text-align: right;'>
             <span>
               <span class='user-message'>#{data.content}</span>
-              <strong> #{data.name}</strong>
+              <strong> #{data.name_link_tag}</strong>
             </span>
+            #{data.image_tag}
           </p>
           "
   else
     msg = "
           <p>
+            #{data.image_tag}
             <span>
-              <strong>#{data.name} </strong>
+              <strong>#{data.name_link_tag} </strong>
               <span class='user-message'>#{data.content}</span>
             </span>
           </p>
