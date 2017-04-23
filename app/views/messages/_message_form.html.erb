@@ -4,4 +4,7 @@
 
   <%= f.hidden_field :chatroom_id, value: @chatroom.id %>
   <%= f.submit :send, class: "btn btn-primary", id: "message-input-btn", style: "display: none", data: {send: "message"} %>
+  <span class="picture">
+    <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+  </span>
 <% end %>

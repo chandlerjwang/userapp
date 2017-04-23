@@ -47,4 +47,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # View Template Engine
 gem 'slim'
 
+# In-memory storage used by Action Cable
 gem 'redis',                   '3.3.1'

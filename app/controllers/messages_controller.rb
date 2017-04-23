@@ -6,11 +6,13 @@ class MessagesController < ApplicationController
     image_tag = gravatar_image_tag message, size: 50
     name_link_tag  = helpers.link_to message.user.name, message.user
     if message.save
+      uploaded_img = helpers.image_tag message.picture.url if message.picture?
       ActionCable.server.broadcast 'room_channel',
                              content:  message.content,
                              name_link_tag: name_link_tag,
                              user_id: message.user.id,
-                             image_tag: image_tag
+                             image_tag: image_tag,
+                             uploaded_img: uploaded_img
       # flash[:success] = "message submitted"
       # redirect_to message.chatroom
     else 
@@ -21,7 +23,7 @@ class MessagesController < ApplicationController
   private
 
     def message_params
-      params.require(:message).permit(:content, :chatroom_id)
+      params.require(:message).permit(:content, :chatroom_id, :picture)
     end
 
     def gravatar_image_tag(message, options = { size: 80 })

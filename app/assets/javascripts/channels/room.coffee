@@ -28,11 +28,14 @@ scroll_bottom = () ->
   $('#messages').scrollTop($('#messages')[0].scrollHeight)
 
 append_message = (data) ->
+  if data.uploaded_img == null
+    data.uploaded_img = ''
   if data.user_id == get_current_user()
 	  msg = "
           <p style='text-align: right;'>
             <span>
               <span class='user-message'>#{data.content}</span>
+              #{data.uploaded_img}
               <strong> #{data.name_link_tag}</strong>
             </span>
             #{data.image_tag}
@@ -45,6 +48,7 @@ append_message = (data) ->
             <span>
               <strong>#{data.name_link_tag} </strong>
               <span class='user-message'>#{data.content}</span>
+              #{data.uploaded_img}
             </span>
           </p>
           "
