@@ -29,9 +29,23 @@ scroll_bottom = () ->
 
 append_message = (data) ->
   if data.user_id == get_current_user()
-	  msg = '<p style="text-align: right;"><strong>' + data.name + ': </strong>' + data.content + '</p>'
+	  msg = "
+          <p style='text-align: right;'>
+            <span>
+              <span class='user-message'>#{data.content}</span>
+              <strong> #{data.name}</strong>
+            </span>
+          </p>
+          "
   else
-	  msg = '<p><strong>' + data.name + ': </strong>' + data.content + '</p>'
+    msg = "
+          <p>
+            <span>
+              <strong>#{data.name} </strong>
+              <span class='user-message'>#{data.content}</span>
+            </span>
+          </p>
+          "
   $('#messages').append msg
 
 
