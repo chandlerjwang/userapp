@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
   def create
     message = current_user.messages.build(message_params)
     image_tag = gravatar_image_tag message, size: 50
-    name_link_tag  = helpers.link_to message.user.name, message.user
+    name_link_tag  = helpers.link_to message.user.name.split[0], message.user
     if message.save
       uploaded_img = helpers.image_tag message.picture.url if message.picture?
       ActionCable.server.broadcast 'room_channel',

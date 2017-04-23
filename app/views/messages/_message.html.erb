@@ -3,7 +3,7 @@
 	<span>
 		<span class="user-message"><%=message.content%></span>
 		<%= image_tag message.picture.url if message.picture? %>
-		<strong><%= link_to message.user.name, message.user%></strong>
+		<strong><%= link_to message.user.name.split[0], message.user%></strong>
 	</span>
 	<%= gravatar_for message.user, size: 50 %>
 	</p>	
@@ -11,7 +11,7 @@
 	<p>
 	<%= gravatar_for message.user, size: 50 %>
 	<span>
-		<strong><%= link_to message.user.name, message.user%></strong>
+		<strong><%= link_to message.user.name.split[0], message.user%></strong>
 		<span class="user-message"><%=message.content%></span>
 		<%= image_tag message.picture.url if message.picture? %>
 	</span>
