@@ -1,11 +1,11 @@
 <div class="row">
 	<div class="col-md-8 col-md-offset-2">
 	  <h1><%= @chatroom.topic %></h1>
-
 		<div class="panel panel-default">
+		  <p style="text-align: center;">Last 25 messages displayed only</p>
 		  <% if @chatroom.messages.any? %>
 		    <div class="panel-body" id="messages">
-		      <%= render @chatroom.messages%>
+		      <%= render @chatroom.messages.for_display%>
 		    </div>
 		  <%else%>
 		    <div class="panel-body hidden" id="messages">

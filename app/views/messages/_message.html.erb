@@ -1,7 +1,17 @@
-<p>
-<%= gravatar_for message.user, size: 50 %>
-<span>
-	<strong><%= link_to message.user.name, message.user%></strong>
-	<span class="user-message"><%=message.content%></span>
-</span>
-</p>
+<% if current_user?(message.user) %> 
+	<p style="text-align: right;">
+	<span>
+		<span class="user-message"><%=message.content%></span>
+		<strong><%= link_to message.user.name, message.user%></strong>
+	</span>
+	<%= gravatar_for message.user, size: 50 %>
+	</p>	
+<% else %>
+	<p>
+	<%= gravatar_for message.user, size: 50 %>
+	<span>
+		<strong><%= link_to message.user.name, message.user%></strong>
+		<span class="user-message"><%=message.content%></span>
+	</span>
+	</p>
+<% end %>	

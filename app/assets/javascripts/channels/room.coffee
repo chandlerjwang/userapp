@@ -26,5 +26,8 @@ scroll_bottom = () ->
   $('#messages').scrollTop($('#messages')[0].scrollHeight)
 
 append_message = (data) ->
-  msg = '<p><strong>' + data.name + ': </strong>' + data.content + '</p>'
+  if data.own_message is true
+	  msg = '<p style="text-align: right;"><strong>' + data.name + ': </strong>' + data.content + '</p>'
+  else
+	  msg = '<p><strong>' + data.name + ': </strong>' + data.content + '</p>'
   $('#messages').append msg
