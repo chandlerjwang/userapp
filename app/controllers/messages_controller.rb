@@ -3,12 +3,11 @@ class MessagesController < ApplicationController
 
   def create
     message = current_user.messages.build(message_params)
-    own_message = current_user?(message.user) ? true : false
     if message.save
       ActionCable.server.broadcast 'room_channel',
                              content:  message.content,
                              name: message.user.name,
-                             own_message: own_message
+                             user_id: message.user.id
       # flash[:success] = "message submitted"
       # redirect_to message.chatroom
     else 

@@ -13,6 +13,7 @@ App.room = App.cable.subscriptions.create "RoomChannel",
 $(document).on 'turbolinks:load', ->
   submit_message()
   scroll_bottom()
+  get_current_user()
 
 
 submit_message = () ->
@@ -23,11 +24,17 @@ submit_message = () ->
       event.preventDefault()		  #don't enter new line  
 
 scroll_bottom = () ->
+  return if $('#messages').length < 1
   $('#messages').scrollTop($('#messages')[0].scrollHeight)
 
 append_message = (data) ->
-  if data.own_message is true
+  if data.user_id == get_current_user()
 	  msg = '<p style="text-align: right;"><strong>' + data.name + ': </strong>' + data.content + '</p>'
   else
 	  msg = '<p><strong>' + data.name + ': </strong>' + data.content + '</p>'
   $('#messages').append msg
+
+
+get_current_user = () ->
+  return if $('.temp-info').length == 0
+  return $('.temp-info').data('temp')
