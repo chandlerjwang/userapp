@@ -1,5 +1,9 @@
 <% if current_user?(message.user) %> 
 	<p style="text-align: right;">
+	<% if current_user.admin? %>
+	<%= link_to "delete", message, method: :delete,
+                              data: { confirm: "You sure?" } %>
+	<% end %>
 	<span>
 		<span class="user-message"><%=message.content%></span>
 		<%= image_tag message.picture.url if message.picture? %>
@@ -15,5 +19,9 @@
 		<span class="user-message"><%=message.content%></span>
 		<%= image_tag message.picture.url if message.picture? %>
 	</span>
+	<% if current_user.admin? %>
+	<%= link_to "delete", message, method: :delete,
+                              data: { confirm: "You sure?" } %>
+	<% end %>
 	</p>
 <% end %>

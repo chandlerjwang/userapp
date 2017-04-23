@@ -20,6 +20,14 @@ class MessagesController < ApplicationController
     end
   end
 
+  def destroy
+    m = Message.find_by(id: params[:id])
+    chatroom_id = m.chatroom_id
+    m.destroy
+    flash[:success] = "Message deleted"
+    redirect_to Chatroom.find_by(id: chatroom_id)
+  end
+
   private
 
     def message_params
