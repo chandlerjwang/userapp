@@ -53,6 +53,8 @@ append_message = (data) ->
           </p>
           "
   $('#messages').append msg
+  $('#message_picture').val('')
+  $('#message-input-btn').attr("disabled", false)
 
 
 get_current_user = () ->
