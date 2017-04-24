@@ -1,24 +1,26 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Simply fork and follow the below list of steps and should be good to go:
 
-Things you may want to cover:
+Clone the repo
 
-* Ruby version
+```
+$ git clone https://github.com/chandlerjwang/userapp.git
+```
 
-* System dependencies
+Gemfile
 
-* Configuration
+```
+$ bundle install --without production
+```
 
-* Database creation
+Migration
 
-* Database initialization
+```
+$ rails db:migrate
+```
+Start the server
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```ruby
+$ rails s
+```
